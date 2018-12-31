@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=0.1
+Name=iota-BROWSER
+Exec=sh -c "cd REPO; make BROWSER"
+Terminal=false
+Type=Application
+Categories=Utility;Application;

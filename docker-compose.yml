@@ -1,0 +1,42 @@
+version: '2'
+
+# Targets docker-compose provides
+services:
+    # Run target, starts browser in container
+    browse:
+        # Build image before running command
+        build:
+            context: ${BROWSER}
+            args:
+                - USER_ID:${USER_ID}
+
+        image: ${BROWSER}
+        user: webuser
+        command: /usr/bin/firefox
+        tty: true
+
+        environment:
+            - DISPLAY=${DISPLAY}
+
+        # Host shared directories: HOST:IMAGE
+        volumes:
+            - /tmp/.X11-unix:/tmp/.X11-unix
+
+    dev:
+        # Build image before running command
+        build:
+            context: ${BROWSER}
+            args:
+                - USER_ID:${USER_ID}
+
+        image: ${BROWSER}
+        user: webuser
+        command: /bin/bash
+        tty: true
+
+        environment:
+            - DISPLAY=${DISPLAY}
+
+        # Host shared directories: HOST:IMAGE
+        volumes:
+            - /tmp/.X11-unix:/tmp/.X11-unix
